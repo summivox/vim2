@@ -74,8 +74,13 @@ Plugin 'jeetsukumaran/vim-indentwise' " motion based on indent depth /[\[\]][-+=
 
 " Misc Editing
 Plugin 'tpope/vim-repeat' " allow `.` to repeat some marcos
+Plugin 'tpope/vim-unimpaired' " lots of convenient mappings -- see docs
+Plugin 'tpope/vim-abolish' " deals with English and cases -- see docs
 "Plugin 'ervandew/supertab'
 "Plugin 'terryma/vim-multiple-cursors' " TODO: way too complex for me now
+
+" Fold
+Plugin 'searchfold.vim' " <leader>z/iz/Z
 
 
 " Language-specific {{{
@@ -389,9 +394,13 @@ endfunction
 function! My_cpp()
     setl sw=4 sts=4 ts=4 et
 
-    nnoremap <buffer> <special> <leader>hg :call My_cpp_hg()<CR>
+    " abbreviations
+	abbr #i #include
+	abbr #I #include
+    abbr #d #define
+    abbr #D #define
 
-    "
+    nnoremap <buffer> <special> <leader>hg :call My_cpp_hg()<CR>
 endfunction
 au Filetype cpp call My_cpp()
 au BufNewFile,BufReadPost *.ino setf cpp " arduino
