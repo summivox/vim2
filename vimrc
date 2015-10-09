@@ -183,7 +183,7 @@ au BufReadPost * normal zR
 
 " timeouts
 " blatantly copied from ppwwyyxx
-set timeoutlen=300                     " wait for ambiguous mapping
+set timeoutlen=500                     " wait for ambiguous mapping
 
 nnoremap ; :
 
