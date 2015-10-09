@@ -46,7 +46,8 @@ Plugin 'mkitt/tabline.vim' " tab
 
 " Widgets
 Plugin 'sjl/gundo.vim' " undo tree
-Plugin 'majutsushi/tagbar' " ctags browser
+Plugin 'taglist.vim' " ctags browser (more stable)
+"Plugin 'majutsushi/tagbar' " ctags browser
 Plugin 'scrooloose/nerdtree' " file browser
 Plugin 'tpope/vim-fugitive' " git client
 Plugin 'tpope/vim-git' " in case vim-fugitive syntax doesn't work
@@ -245,8 +246,9 @@ let g:indentLine_char='┊'
 "let g:indentLine_char='|'
 "let g:indentLine_enabled=0
 
-" tagbar
-nnoremap <silent> <F4> :TagbarToggle<CR>
+" taglist/tagbar
+nnoremap <silent> <F4> :TlistToggle<CR>
+"nnoremap <silent> <F4> :TagbarToggle<CR>
 
 " gundo
 noremap <F5> :GundoToggle <CR>
@@ -282,7 +284,7 @@ set wildignore+=*~,*.bak,*.sw
 set laststatus=2
 set guifont=Consolas_for_Powerline_FixedD:h10,Consolas:h10
 let g:airline_theme='bubblegum'
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#enabled=1
 let g:airline_mode_map = {
             \ '__' : '-',
             \ 'n'  : 'N',
