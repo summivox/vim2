@@ -22,13 +22,18 @@ Optional:
 
 ## Installation
 
-```bash
-git clone  --recursive https://github.com/summivox/vim2 ~/.vim
-```
+1. Clone this repo:
 
-Windows: run `~/.vim/win.bat` (using windows `cmd`)
+   ```bash
+   git clone  --recursive https://github.com/summivox/vim2 ~/.vim
+   ```
 
-Fonts: Install all fonts under `~/.vim/_font`
+2. Windows: run `win.bat` in repo root
+
+3. Fonts: Install all fonts under `~/.vim/_font`
+
+4. open `gvim` then `:PluginInstall`
+
 
 ## Features
 
