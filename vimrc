@@ -73,6 +73,7 @@ Plugin 'easymotion/vim-easymotion' " http://net.tutsplus.com/tutorials/other/vim
 Plugin 'jeetsukumaran/vim-indentwise' " motion based on indent depth /[\[\]][-+=_]/
 
 " Misc Editing
+Plugin 'tpope/vim-repeat' " allow `.` to repeat some marcos
 "Plugin 'ervandew/supertab'
 "Plugin 'terryma/vim-multiple-cursors' " TODO: way too complex for me now
 
