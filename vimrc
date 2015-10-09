@@ -13,7 +13,6 @@ set tabpagemax=50
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave xterm
-syntax on
 
 
 """"""""""""""""""""""""""""""""""""""""
@@ -43,7 +42,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'qstrahl/vim-matchmaker' " TODO
 "Plugin 'myusuf3/numbers.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'gcmt/taboo.vim' " fancy tab bar
+Plugin 'mkitt/tabline.vim' " tab
 
 " Widgets
 Plugin 'sjl/gundo.vim' " undo tree
@@ -140,8 +139,8 @@ set fencs=utf8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 set langmenu=en_US.utf8
 let $LANG='en_US.utf8'
 set guioptions=gmlrt
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
+"source $VIMRUNTIME/delmenu.vim
+"source $VIMRUNTIME/menu.vim
 set number foldcolumn=1
 set mouse=a
 set showcmd
@@ -242,7 +241,7 @@ nnoremap <F2> :NERDTree<CR>
 "nmap <F3> <Leader>ig
 nnoremap <F3> :IndentLinesToggle<CR>
 let g:indentLine_char='┊'
-let g:indentLine_char='|'
+"let g:indentLine_char='|'
 "let g:indentLine_enabled=0
 
 " tagbar
