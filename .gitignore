@@ -1,0 +1,9 @@
+# bundles: include vundle only for bootstrapping
+bundle/*
+!bundle/Vundle*
+
+# swap: need to have this folder created
+_swap/*
+!_swap/DUMMY
+
+.netrwhist
