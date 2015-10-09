@@ -109,6 +109,7 @@ Plugin 'chrisbra/csv.vim' " TODO: learn!
 Plugin 'evanmiller/nginx-vim-syntax'
 
 " misc
+Plugin 'fatih/vim-go'
 Plugin 'summivox/vim-pawn'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-ftplugin'
@@ -453,23 +454,10 @@ endfunction
 au Filetype jade call My_jade()
 
 " go
-function! Lastdir(path)
-    let l:i1 = strridx(a:path, "/")
-    let l:i2 = strridx(a:path, "\\")
-    let l:i = (l:i1!=-1)?(l:i1):(l:i2)
-    return strpart(a:path, l:i+1)
-endfunction
-function! GoDebug()
-    let l:fn = Lastdir(getcwd()) . ".exe"
-    let l:cmd = "!start gdb64 \"" . fn . "\""
-    exec l:cmd
-endfunction
 function! My_go()
     setl sw=4 sts=4 ts=4 noet
-    let &mp="go build -gcflags \"-N -l\" . "
-    nnoremap <buffer> <F10> :w<CR>:!go run "%" <CR>
-    nnoremap <buffer> <F8> :call GoDebug()<CR>
-    nnoremap <buffer> <F11> m`:%!gofmt<CR>``
+    nnoremap <buffer> <C-F9> :GoBuild<CR>
+    nnoremap <buffer> <F10> :GoRun<CR>
 endfunction
 au Filetype go call My_go()
 
