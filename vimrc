@@ -3,6 +3,7 @@
 "
 " References:
 "   https://github.com/ppwwyyxx/dotvim
+"   http://dougblack.io/words/a-good-vimrc.html
 "
 """"""""""""""""""""""""""""""""""""""""
 
@@ -13,6 +14,13 @@ set tabpagemax=50
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave xterm
+
+
+
+""""""""""""""""""""""""""""""""""""""""
+" rtp-based plugins
+"set rtp+=~/.vim/_ycm
+
 
 
 """"""""""""""""""""""""""""""""""""""""
@@ -350,12 +358,21 @@ endfunc
 nmap <Leader>xx :call ToggleHex()<CR>
 
 " Delete Trailing space in all lines
-" almost blatantly copied from ppwwyyxx
 func! DeleteTrailingWhiteSpace()
-    normal mZ
+    " almost blatantly copied from ppwwyyxx
+    "normal mZ
+    "%s/\s\+$//e
+    "normal `Z
+    "noh
+
+    " from dougblack
+    " save last search & cursor position
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
     %s/\s\+$//e
-    normal `Z
-    noh
+    let @/=_s
+    call cursor(l, c)
 endfunc
 nnoremap <silent> <leader>ts :call DeleteTrailingWhiteSpace()<CR>
 
