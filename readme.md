@@ -30,7 +30,7 @@ Optional:
 
 2. Windows: run `win.bat` in repo root
 
-3. Fonts: Install all fonts under `~/.vim/_font`
+3. Fonts: Install all fonts under `_font`
 
 4. open `gvim` then `:PluginInstall`
 
