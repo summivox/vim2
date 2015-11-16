@@ -4,6 +4,7 @@
 " References:
 "   https://github.com/ppwwyyxx/dotvim
 "   http://dougblack.io/words/a-good-vimrc.html
+"   https://github.com/blaenk/dots/
 "
 """"""""""""""""""""""""""""""""""""""""
 
@@ -39,13 +40,14 @@ Plugin 'LargeFile'
 
 " YCM & Syntax
 " TODO: find good binary distribution
+"Plugin 'Valloric/YouCompleteMe'
 "Plugin 'kirtgoh/vim-ycm-windows'
 "Plugin 'scrooloose/syntastic'
 
 " UI
 Plugin 'bling/vim-airline' " powerline replacement
 Plugin 'Yggdroot/indentLine' " indent guides (fancy)
-"Plugin 'nathanaelkane/vim-indent-guides' " indent guides (blocky)
+"Plugin 'nathanaelkane/vim-indent-guides' " indent guides (blockykirtgoh/vim-ycm-windows)
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'qstrahl/vim-matchmaker' " TODO
 "Plugin 'myusuf3/numbers.vim'
@@ -58,7 +60,8 @@ Plugin 'taglist.vim' " ctags browser (more stable)
 "Plugin 'majutsushi/tagbar' " ctags browser
 Plugin 'scrooloose/nerdtree' " file browser
 Plugin 'tpope/vim-fugitive' " git client
-Plugin 'tpope/vim-git' " in case vim-fugitive syntax doesn't work
+"Plugin 'tpope/vim-git' " in case vim-fugitive syntax doesn't work
+Plugin 'tpope/vim-dispatch' " `:Make` => async `:make`
 
 " Macro Editing
 Plugin 'scrooloose/nerdcommenter'
@@ -69,7 +72,7 @@ Plugin 'yueyoum/vim-linemovement' " C-up/down moves lines up/down
 
 " Text Objects
 " TODO: mapping
-Plugin 'austintaylor/vim-indentobject'
+"Plugin 'austintaylor/vim-indentobject'
 Plugin 'lucapette/vim-textobj-underscore' " like vaw/viw but treating `_` as word boundary
 Plugin 'kana/vim-textobj-indent'
 Plugin 'kana/vim-textobj-user'
@@ -202,7 +205,7 @@ set timeoutlen=500                     " wait for ambiguous mapping
 nnoremap ; :
 
 " make
-noremap <C-F9> :w <CR>:make <CR>:cw <CR>
+noremap <C-F9> :w <CR>:Make <CR>:cw <CR>
 
 " nohlsearch
 nnoremap <ESC><ESC> :noh <CR>
@@ -242,6 +245,12 @@ nnoremap <special> <leader>c/ o<CR><CR><esc><up>40i/<esc>o
 nnoremap <special> <leader>c# o<CR><CR><esc><up>40i#<esc>o
 nnoremap <special> <leader>c% o<CR><CR><esc><up>40i%<esc>o
 nnoremap <special> <leader>c" o<CR><CR><esc><up>40i"<esc>o
+
+" better indent adjustment
+" from blaenk
+vnoremap > >gv
+vnoremap < <gv
+
 
 "}}}
 
@@ -376,6 +385,21 @@ func! DeleteTrailingWhiteSpace()
 endfunc
 nnoremap <silent> <leader>ts :call DeleteTrailingWhiteSpace()<CR>
 
+" mode-aware cursors
+" blatantly copied from blaenk
+"set gcr=a:block
+"set gcr+=o:hor50-Cursor
+"set gcr+=n:Cursor
+"set gcr+=i-ci-sm:InsertCursor
+"set gcr+=r-cr:ReplaceCursor-hor20
+"set gcr+=c:CommandCursor
+"set gcr+=v-ve:VisualCursor
+"set gcr+=a:blinkon0
+"hi InsertCursor  ctermfg=15 guifg=#fdf6e3 ctermbg=37  guibg=#2aa198
+"hi VisualCursor  ctermfg=15 guifg=#fdf6e3 ctermbg=125 guibg=#d33682
+"hi ReplaceCursor ctermfg=15 guifg=#fdf6e3 ctermbg=65  guibg=#dc322f
+"hi CommandCursor ctermfg=15 guifg=#fdf6e3 ctermbg=166 guibg=#cb4b16
+
 "}}}
 
 
@@ -452,7 +476,7 @@ function! My_iced()
     call My_coffee()
 
     " inline iced-coffee-script runtime
-    nnoremap <buffer> <F9> :w <CR>:make -I inline <CR>:cw <CR>
+    nnoremap <buffer> <F9> :w <CR>:Make -I inline <CR>:cw <CR>
 endfunction
 au Filetype iced call My_iced()
 
