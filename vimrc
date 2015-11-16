@@ -502,7 +502,9 @@ function! My_python()
     nnoremap <buffer> <F10> :w <CR>:!python "%" <CR>
 endfunction
 au Filetype python call My_python()
+au BufNewFile,BufRead .pythonrc setf python
 
+" nex
 au BufNewFile,BufReadPost *.nex call My_nex()
 
 " markdown
