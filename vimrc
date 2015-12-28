@@ -274,8 +274,8 @@ map <sid>RestoreWinPosn <Plug>RestoreWinPosn
 " indent guide
 "nmap <F3> <leader>ig
 nnoremap <F3> :IndentLinesToggle<cr>
-let g:indentLine_char='┊'
-"let g:indentLine_char='|'
+"let g:indentLine_char='┊'
+let g:indentLine_char='|'
 "let g:indentLine_enabled=0
 
 " taglist/tagbar
@@ -557,11 +557,11 @@ au BufNewFile,BufReadPost *.nex call My_nex()
 
 " markdown
 function! My_markdown()
-    setl linebreak
+    setl linebreak textwidth=80
     let &mp="marked \"%\" -o \"%<.html\" "
     nnoremap <buffer> <leader><cr> gqap
 endfunction
-au Filetype markdown call My_markdown()
+au Filetype markdown,mkd.markdown call My_markdown()
 
 " verilog
 function! My_verilog()
