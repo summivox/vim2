@@ -49,10 +49,11 @@ Plugin 'bling/vim-airline' " powerline replacement
 Plugin 'Yggdroot/indentLine' " indent guides (fancy)
 "Plugin 'nathanaelkane/vim-indent-guides' " indent guides (blockykirtgoh/vim-ycm-windows)
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'qstrahl/vim-matchmaker' " TODO
+Plugin 'qstrahl/vim-matchmaker' " highlight word under cursor
 "Plugin 'myusuf3/numbers.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mkitt/tabline.vim' " tab
+Plugin 'xolox/vim-session'
 
 " Widgets
 Plugin 'sjl/gundo.vim' " undo tree
@@ -179,7 +180,7 @@ set autoindent
 set shiftwidth=4 softtabstop=4 tabstop=4
 
 " window control
-set noequalalways
+"set noequalalways
 
 " scroll control
 set scrolloff=7
@@ -274,8 +275,9 @@ map <sid>RestoreWinPosn <Plug>RestoreWinPosn
 " indent guide
 "nmap <F3> <leader>ig
 nnoremap <F3> :IndentLinesToggle<cr>
-"let g:indentLine_char='┊'
-let g:indentLine_char='|'
+"let g:indentLine_char='⁞'
+let g:indentLine_char='¦'
+"let g:indentLine_char='|'
 "let g:indentLine_enabled=0
 
 " taglist/tagbar
@@ -284,6 +286,11 @@ nnoremap <silent> <F4> :TlistToggle<cr>
 
 " gundo
 noremap <F5> :GundoToggle <cr>
+
+" matchmaker
+noremap <F6> :MatchmakerToggle <cr>
+let g:matchmaker_enable_startup = 1
+let g:matchmaker_matchpriority = 0
 
 " fswitch
 nmap <silent> <leader>of :FSHere<cr>
