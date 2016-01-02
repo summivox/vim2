@@ -153,7 +153,7 @@ filetype plugin indent on
 
 " backup/swap dir
 set nobackup
-set dir=~/.vim/_swap
+set dir=~/.vim/_swap//
 
 " encoding, language, UI
 " esp. for gVim on Windows
@@ -513,6 +513,8 @@ au Filetype iced call My_iced()
 function! My_ls()
     " setl fdm=indent nofoldenable
     hi link lsSpaceError NONE
+    syntax keyword assert assert
+    hi link assert Statement
     setl sw=2 sts=2 et
     let &mp='grunt'
     " let livescript_make_options = '--map linked'
