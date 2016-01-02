@@ -54,6 +54,7 @@ Plugin 'qstrahl/vim-matchmaker' " highlight word under cursor
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mkitt/tabline.vim' " tab
 Plugin 'xolox/vim-session'
+Plugin 'severin-lemaignan/vim-minimap' " yes, we have minimap!
 
 " Widgets
 Plugin 'sjl/gundo.vim' " undo tree
