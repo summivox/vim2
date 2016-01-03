@@ -54,7 +54,8 @@ Plugin 'qstrahl/vim-matchmaker' " highlight word under cursor
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mkitt/tabline.vim' " tab
 Plugin 'xolox/vim-session'
-Plugin 'severin-lemaignan/vim-minimap' " yes, we have minimap!
+"Plugin 'severin-lemaignan/vim-minimap' " draws text
+Plugin 'koron/minimap-vim' " opens another vim window in sync
 
 " Widgets
 Plugin 'sjl/gundo.vim' " undo tree
@@ -399,6 +400,7 @@ func! DeleteTrailingWhiteSpace()
     %s/\s\+$//e
     let @/=_s
     call cursor(l, c)
+    redraw
 endfunc
 nnoremap <silent> <leader>ts :call DeleteTrailingWhiteSpace()<cr>
 
