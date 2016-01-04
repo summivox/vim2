@@ -49,10 +49,13 @@ Plugin 'bling/vim-airline' " powerline replacement
 Plugin 'Yggdroot/indentLine' " indent guides (fancy)
 "Plugin 'nathanaelkane/vim-indent-guides' " indent guides (blockykirtgoh/vim-ycm-windows)
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'qstrahl/vim-matchmaker' " TODO
+Plugin 'qstrahl/vim-matchmaker' " highlight word under cursor
 "Plugin 'myusuf3/numbers.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mkitt/tabline.vim' " tab
+Plugin 'xolox/vim-session'
+"Plugin 'severin-lemaignan/vim-minimap' " draws text
+Plugin 'koron/minimap-vim' " opens another vim window in sync
 
 " Widgets
 Plugin 'sjl/gundo.vim' " undo tree
@@ -115,6 +118,9 @@ Plugin 'summivox/vim-coffee-script'
 Plugin 'gkz/vim-ls'
 Plugin 'vim-scripts/JSON.vim'
 
+" python world
+Plugin 'hynek/vim-python-pep8-indent'
+
 " markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
@@ -149,7 +155,7 @@ filetype plugin indent on
 
 " backup/swap dir
 set nobackup
-set dir=~/.vim/_swap
+set dir=~/.vim/_swap//
 
 " encoding, language, UI
 " esp. for gVim on Windows
@@ -172,11 +178,11 @@ set modelines=100
 
 " default indentation
 set expandtab smarttab
-set autoindent smartindent
+set autoindent
 set shiftwidth=4 softtabstop=4 tabstop=4
 
 " window control
-set noequalalways
+"set noequalalways
 
 " scroll control
 set scrolloff=7
@@ -205,10 +211,10 @@ set timeoutlen=500                     " wait for ambiguous mapping
 nnoremap ; :
 
 " make
-noremap <C-F9> :w <CR>:Make <CR>:cw <CR>
+noremap <C-F9> :w <cr>:Make <cr>:cw <cr>
 
 " nohlsearch
-nnoremap <ESC><ESC> :noh <CR>
+nnoremap <ESC><ESC> :noh <cr>
 
 " compromise: increase/decrease
 nnoremap <c-a> ggVG
@@ -236,15 +242,15 @@ nmap <special> <leader>s "+yiw:%s/\<<c-v>\>//g<left><left>
 vmap <special> <leader>s "+y:%s/<c-v>//g<left><left>
 
 " diff
-nnoremap <leader>wt :windo difft<CR>
-nnoremap <leader>wo :windo diffo<CR>
+nnoremap <leader>wt :windo difft<cr>
+nnoremap <leader>wo :windo diffo<cr>
 nnoremap <leader>vds :vert diffsplit<space>
 
 " section delimiter comment
-nnoremap <special> <leader>c/ o<CR><CR><esc><up>40i/<esc>o
-nnoremap <special> <leader>c# o<CR><CR><esc><up>40i#<esc>o
-nnoremap <special> <leader>c% o<CR><CR><esc><up>40i%<esc>o
-nnoremap <special> <leader>c" o<CR><CR><esc><up>40i"<esc>o
+nnoremap <special> <leader>c/ o<cr><cr><esc><up>40i/<esc>o
+nnoremap <special> <leader>c# o<cr><cr><esc><up>40i#<esc>o
+nnoremap <special> <leader>c% o<cr><cr><esc><up>40i%<esc>o
+nnoremap <special> <leader>c" o<cr><cr><esc><up>40i"<esc>o
 
 " better indent adjustment
 " from blaenk
@@ -260,37 +266,49 @@ vnoremap < <gv
 
 " nerdtree
 let NERDTreeHijackNetrw=1
-nnoremap <F2> :NERDTree<CR>
+nnoremap <F2> :NERDTree<cr>
+
+" vim-align
+" NOTE: This *blocks* <leader>swp and <leader>rwp from being mapped. Who gave
+" you permission? Huh?
+map <sid>SaveWinPosn <Plug>SaveWinPosn
+map <sid>RestoreWinPosn <Plug>RestoreWinPosn
 
 " indent guide
-"nmap <F3> <Leader>ig
-nnoremap <F3> :IndentLinesToggle<CR>
-let g:indentLine_char='┊'
+"nmap <F3> <leader>ig
+nnoremap <F3> :IndentLinesToggle<cr>
+"let g:indentLine_char='⁞'
+let g:indentLine_char='¦'
 "let g:indentLine_char='|'
 "let g:indentLine_enabled=0
 
 " taglist/tagbar
-nnoremap <silent> <F4> :TlistToggle<CR>
-"nnoremap <silent> <F4> :TagbarToggle<CR>
+nnoremap <silent> <F4> :TlistToggle<cr>
+"nnoremap <silent> <F4> :TagbarToggle<cr>
 
 " gundo
-noremap <F5> :GundoToggle <CR>
+noremap <F5> :GundoToggle <cr>
+
+" matchmaker
+noremap <F6> :MatchmakerToggle <cr>
+let g:matchmaker_enable_startup = 1
+let g:matchmaker_matchpriority = 0
 
 " fswitch
-nmap <silent> <Leader>of :FSHere<cr>
-nmap <silent> <Leader>ol :FSRight<cr>
-nmap <silent> <Leader>oL :FSSplitRight<cr>
-nmap <silent> <Leader>oh :FSLeft<cr>
-nmap <silent> <Leader>oH :FSSplitLeft<cr>
-nmap <silent> <Leader>ok :FSAbove<cr>
-nmap <silent> <Leader>oK :FSSplitAbove<cr>
-nmap <silent> <Leader>oj :FSBelow<cr>
-nmap <silent> <Leader>oJ :FSSplitBelow<cr>
+nmap <silent> <leader>of :FSHere<cr>
+nmap <silent> <leader>ol :FSRight<cr>
+nmap <silent> <leader>oL :FSSplitRight<cr>
+nmap <silent> <leader>oh :FSLeft<cr>
+nmap <silent> <leader>oH :FSSplitLeft<cr>
+nmap <silent> <leader>ok :FSAbove<cr>
+nmap <silent> <leader>oK :FSSplitAbove<cr>
+nmap <silent> <leader>oj :FSBelow<cr>
+nmap <silent> <leader>oJ :FSSplitBelow<cr>
 
 
 " TOhtml (builtin)
-"nnoremap <F12> :TOhtml <CR>
-"vnoremap <F12> :TOhtml <CR>
+"nnoremap <F12> :TOhtml <cr>
+"vnoremap <F12> :TOhtml <cr>
 let g:html_use_css=0
 let g:html_no_pre=1
 
@@ -364,7 +382,7 @@ func! ToggleHex()
     " restore values for modified and read only state
     let &mod=l:modified | let &readonly=l:oldreadonly | let &modifiable=l:oldmodifiable
 endfunc
-nmap <Leader>xx :call ToggleHex()<CR>
+nmap <leader>xx :call ToggleHex()<cr>
 
 " Delete Trailing space in all lines
 func! DeleteTrailingWhiteSpace()
@@ -382,8 +400,22 @@ func! DeleteTrailingWhiteSpace()
     %s/\s\+$//e
     let @/=_s
     call cursor(l, c)
+    redraw
 endfunc
-nnoremap <silent> <leader>ts :call DeleteTrailingWhiteSpace()<CR>
+nnoremap <silent> <leader>ts :call DeleteTrailingWhiteSpace()<cr>
+
+" Indent lines for tab-indented languages
+func! ToggleTabIndentLine()
+    " NOTE: trailing spaces are intended
+    if ! exists("b:TabIndentLine") || !b:TabIndentLine
+        setl list lcs+=tab:\|\
+        let b:TabIndentLine=1
+    else
+        setl nolist lcs-=tab:\|\
+        let b:TabIndentLine=0
+    end
+endfunc
+nmap <leader>ti :call ToggleTabIndentLine()<cr>
 
 " mode-aware cursors
 " blatantly copied from blaenk
@@ -441,7 +473,7 @@ function! My_cpp()
     abbr #d #define
     abbr #D #define
 
-    nnoremap <buffer> <special> <leader>hg :call My_cpp_hg()<CR>
+    nnoremap <buffer> <special> <leader>hg :call My_cpp_hg()<cr>
 endfunction
 au Filetype cpp call My_cpp()
 au BufNewFile,BufReadPost *.ino setf cpp " arduino
@@ -453,10 +485,10 @@ au BufNewFile,BufRead *.gprof setf gprof
 
 " javascript
 function! My_javascript()
-    setl sw=2 sts=2 ts=2 et
+    setl sw=2 sts=2 ts=2 et cindent
     let &mp='grunt'
-    nnoremap <buffer> <F10> :!node "%" <CR>
-    nnoremap <buffer> <F8> :!node-debug "%" <CR>
+    nnoremap <buffer> <F10> :!node "%" <cr>
+    nnoremap <buffer> <F8> :!node-debug "%" <cr>
 endfunction
 au Filetype javascript call My_javascript()
 
@@ -467,8 +499,8 @@ function! My_coffee()
     setl fdm=indent nofoldenable
     setl sw=2 sts=2 et
     let &mp='grunt'
-    nnoremap <buffer> <F10> :CoffeeRun <CR>
-    nnoremap <buffer> <C-F10> :CoffeeCompile vert <CR>
+    nnoremap <buffer> <F10> :CoffeeRun <cr>
+    nnoremap <buffer> <C-F10> :CoffeeCompile vert <cr>
 endfunction
 au Filetype coffee call My_coffee()
 au BufNewFile,BufRead *.cson setl ft=coffee
@@ -476,7 +508,7 @@ function! My_iced()
     call My_coffee()
 
     " inline iced-coffee-script runtime
-    nnoremap <buffer> <F9> :w <CR>:Make -I inline <CR>:cw <CR>
+    nnoremap <buffer> <F9> :w <cr>:Make -I inline <cr>:cw <cr>
 endfunction
 au Filetype iced call My_iced()
 
@@ -484,12 +516,14 @@ au Filetype iced call My_iced()
 function! My_ls()
     " setl fdm=indent nofoldenable
     hi link lsSpaceError NONE
+    syntax keyword assert assert
+    hi link assert Statement
     setl sw=2 sts=2 et
     let &mp='grunt'
     " let livescript_make_options = '--map linked'
     let livescript_compile_vert = 1
-    nnoremap <buffer> <F10> :LiveScriptRun <CR>
-    nnoremap <buffer> <C-F10> :LiveScriptCompile vert <CR>
+    nnoremap <buffer> <F10> :LiveScriptRun <cr>
+    nnoremap <buffer> <C-F10> :LiveScriptCompile vert <cr>
 endfunction
 au Filetype ls call My_ls()
 
@@ -509,21 +543,23 @@ au Filetype jade call My_jade()
 " go
 function! My_go()
     setl sw=4 sts=4 ts=4 noet
-    nnoremap <buffer> <C-F9> :GoBuild<CR>
-    nnoremap <buffer> <F10> :GoRun<CR>
+    nnoremap <buffer> <C-F9> :GoBuild<cr>
+    nnoremap <buffer> <F10> :GoRun<cr>
 endfunction
 au Filetype go call My_go()
 
 " nex
 function! My_nex()
-    nnoremap <buffer> <C-F9> :w <CR>:!nex -s <"%" >"%.go" <CR>
-    nnoremap <buffer> <C-S-F9> :w <CR>:!nex <"%" >"%.go" <CR>
+    nnoremap <buffer> <C-F9> :w <cr>:!nex -s <"%" >"%.go" <cr>
+    nnoremap <buffer> <C-S-F9> :w <cr>:!nex <"%" >"%.go" <cr>
 endfunction
 
 " python
 function! My_python()
-    setl sw=4 sts=4 ts=4 noet
-    nnoremap <buffer> <F10> :w <CR>:!python "%" <CR>
+    setl sw=4 sts=4 ts=4 noet cindent
+    nnoremap <buffer> <F10> :w <cr>:!python "%" <cr>
+    setl lcs=
+    call ToggleTabIndentLine()
 endfunction
 au Filetype python call My_python()
 au BufNewFile,BufRead .pythonrc setf python
@@ -540,11 +576,11 @@ au BufNewFile,BufReadPost *.nex call My_nex()
 
 " markdown
 function! My_markdown()
-    setl linebreak
+    setl linebreak textwidth=80
     let &mp="marked \"%\" -o \"%<.html\" "
-    nnoremap <buffer> <leader><CR> gqap
+    nnoremap <buffer> <leader><cr> gqap
 endfunction
-au Filetype markdown call My_markdown()
+au Filetype markdown,mkd.markdown call My_markdown()
 
 " verilog
 function! My_verilog()
@@ -555,7 +591,7 @@ function! My_verilog()
     hi def link verilogMacro Macro
 
     " TODO: make a wire/reg/... bus
-    " noremap <buffer> <special> <leader>vw ^/\\<wire\\|reg\\|input\\|output\\|inout\\|tri(\\d\\|and\\|or\\|reg\\|)\\>/<CR>ta<space>[-1:0]<esc>hhhhi
+    " noremap <buffer> <special> <leader>vw ^/\\<wire\\|reg\\|input\\|output\\|inout\\|tri(\\d\\|and\\|or\\|reg\\|)\\>/<cr>ta<space>[-1:0]<esc>hhhhi
 endfunction
 au BufNewFile,BufReadPost *.vh setl ft=verilog
 au Filetype verilog call My_verilog()
@@ -571,7 +607,7 @@ function! My_pawn()
     setl sw=4 sts=4 ts=4 et
     setl cin
     let &mp="pawncc -O3 \"%\" "
-    map <buffer> <F10> :!pawnrun "%<.amx" <CR>
+    map <buffer> <F10> :!pawnrun "%<.amx" <cr>
 endfunction
 au BufNewFile,BufReadPost *.p setl ft=sourcepawn
 au BufNewFile,BufReadPost *.inc setl ft=sourcepawn
