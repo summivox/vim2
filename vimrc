@@ -528,6 +528,13 @@ endfunction
 au Filetype python call My_python()
 au BufNewFile,BufRead .pythonrc setf python
 
+" ruby
+function! My_ruby()
+    setl sw=2 sts=2 ts=2 noet
+    "nnoremap <buffer> <F10> :w <CR>:!python "%" <CR> " TODO
+endfunction
+au Filetype ruby call My_ruby()
+
 " nex
 au BufNewFile,BufReadPost *.nex call My_nex()
 
