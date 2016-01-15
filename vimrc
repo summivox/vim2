@@ -323,7 +323,12 @@ set wildignore+=*~,*.bak,*.sw
 
 " airline
 set laststatus=2
-set guifont=Consolas_for_Powerline_FixedD:h10,Consolas:h10
+if has("gui_gtk2")
+    set guifont=Consolas\ for\ Powerline\ 11,Consolas\ 11
+elseif has("gui_win32")
+    set guifont=Consolas_for_Powerline_FixedD:h10,Consolas:h10
+end
+"set guifont=Consolas_for_Powerline_FixedD:h10,Consolas:h10
 let g:airline_theme='bubblegum'
 "let g:airline#extensions#tabline#enabled=1
 let g:airline_mode_map = {
