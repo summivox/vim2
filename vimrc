@@ -115,7 +115,8 @@ Plugin 'tristen/vim-sparkup'
 Plugin 'pangloss/vim-javascript'
 "Plugin 'kchmck/vim-coffee-script'
 Plugin 'summivox/vim-coffee-script'
-Plugin 'gkz/vim-ls'
+"Plugin 'gkz/vim-ls'
+Plugin 'summivox/vim-ls'
 Plugin 'vim-scripts/JSON.vim'
 
 " python world
