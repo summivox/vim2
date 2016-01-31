@@ -6,4 +6,7 @@ bundle/*
 _swap/*
 !_swap/DUMMY
 
+# xolox/vim-session
+sessions/
+
 .netrwhist
