@@ -278,10 +278,12 @@ map <sid>RestoreWinPosn <Plug>RestoreWinPosn
 " indent guide
 "nmap <F3> <leader>ig
 nnoremap <F3> :IndentLinesToggle<cr>
-"let g:indentLine_char='⁞'
-let g:indentLine_char='¦'
-"let g:indentLine_char='|'
-"let g:indentLine_enabled=0
+func! My_indentLine()
+    "let g:indentLine_char = '¦'
+    let g:indentLine_color_gui = '#AACCEE'
+    "echo g:indentLine_char
+endfunc
+au BufNew,BufReadPre * call My_indentLine()
 
 " taglist/tagbar
 nnoremap <silent> <F4> :TlistToggle<cr>
