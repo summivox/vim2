@@ -157,6 +157,7 @@ filetype plugin indent on
 " backup/swap dir
 set nobackup
 set dir=~/.vim/_swap//
+set undodir=~/.vim/_swap//
 
 " encoding, language, UI
 " esp. for gVim on Windows
