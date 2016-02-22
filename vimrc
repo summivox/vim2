@@ -44,6 +44,9 @@ Plugin 'LargeFile'
 "Plugin 'kirtgoh/vim-ycm-windows'
 "Plugin 'scrooloose/syntastic'
 
+" format
+Plugin 'editorconfig/editorconfig-vim'
+
 " UI
 Plugin 'bling/vim-airline' " powerline replacement
 Plugin 'Yggdroot/indentLine' " indent guides (fancy)
@@ -54,8 +57,6 @@ Plugin 'qstrahl/vim-matchmaker' " highlight word under cursor
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mkitt/tabline.vim' " tab
 Plugin 'xolox/vim-session'
-"Plugin 'severin-lemaignan/vim-minimap' " draws text
-Plugin 'koron/minimap-vim' " opens another vim window in sync
 
 " Widgets
 Plugin 'sjl/gundo.vim' " undo tree
@@ -65,6 +66,8 @@ Plugin 'scrooloose/nerdtree' " file browser
 Plugin 'tpope/vim-fugitive' " git client
 "Plugin 'tpope/vim-git' " in case vim-fugitive syntax doesn't work
 Plugin 'tpope/vim-dispatch' " `:Make` => async `:make`
+"Plugin 'severin-lemaignan/vim-minimap' " draws text
+Plugin 'koron/minimap-vim' " opens another vim window in sync
 
 " Macro Editing
 Plugin 'scrooloose/nerdcommenter'
@@ -266,6 +269,9 @@ vnoremap < <gv
 """"""""""""""""""""""""""""""""""""""""
 " plugin settings and mappings {{{
 
+" editorconfig-vim
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
 " nerdtree
 let NERDTreeHijackNetrw=1
 nnoremap <F2> :NERDTree<cr>
@@ -440,6 +446,14 @@ nmap <leader>ti :call ToggleTabIndentLine()<cr>
 "hi VisualCursor  ctermfg=15 guifg=#fdf6e3 ctermbg=125 guibg=#d33682
 "hi ReplaceCursor ctermfg=15 guifg=#fdf6e3 ctermbg=65  guibg=#dc322f
 "hi CommandCursor ctermfg=15 guifg=#fdf6e3 ctermbg=166 guibg=#cb4b16
+
+" global todo keywords
+augroup vimrc_todo
+    au!
+    au Syntax * syn match MyTodo /\v<(FIXME|NOTE|TODO|OPTIMIZE|XXX)>/
+          \ containedin=.*Comment,vimCommentTitle
+augroup END
+hi def link MyTodo Todo
 
 "}}}
 
