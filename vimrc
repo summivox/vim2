@@ -99,6 +99,10 @@ Plugin 'tpope/vim-abolish' " deals with English and cases -- see docs
 " Fold
 Plugin 'searchfold.vim' " <leader>z/iz/Z
 
+" Search
+Plugin 'rking/ag.vim' " :Ag [options] {pattern} [{directory}]
+Plugin 'Chun-Yang/vim-action-ag' " normal gag {text object}    e.g. gagiw
+
 
 " Language-specific {{{
 
@@ -159,7 +163,7 @@ filetype plugin indent on
 
 " backup/swap dir
 set nobackup
-set dir=~/.vim/_swap//
+set dir=~/.vim/_swap//,$TEMP
 set undodir=~/.vim/_swap//
 
 " encoding, language, UI
@@ -372,6 +376,10 @@ set completeopt=menuone,preview
 " GitGutter
 let g:gitgutter_sign_column_always = 1
 
+" session
+let g:session_autoload = 'no'
+let g:session_autosave = 'prompt'
+
 "}}}
 
 
@@ -455,12 +463,21 @@ augroup vimrc_todo
 augroup END
 hi def link MyTodo Todo
 
+" http://stackoverflow.com/questions/7413036/stopping-vim-from-removing-indentation-on-empty-lines
+func! PreserveIndentAfterEsc()
+    inoremap <CR> <CR>x<BS>
+    nnoremap o ox<BS>
+    nnoremap O Ox<BS>
+endfunc
+
 "}}}
 
 
 """"""""""""""""""""""""""""""""""""""""
 " Filetype Specific {{{
 
+"augroup vimrc_filetype
+"au!
 
 " cpp {{{
 
@@ -635,5 +652,8 @@ au BufNewFile,BufReadPost *.inc setl ft=sourcepawn
 
 au Filetype pawn call My_pawn()
 au Filetype sourcepawn call My_pawn()
+
+"augroup END
+
 
 "}}}
