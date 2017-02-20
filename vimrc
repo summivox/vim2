@@ -260,6 +260,7 @@ nnoremap <special> <leader>c/ o<cr><cr><esc><up>40i/<esc>o
 nnoremap <special> <leader>c# o<cr><cr><esc><up>40i#<esc>o
 nnoremap <special> <leader>c% o<cr><cr><esc><up>40i%<esc>o
 nnoremap <special> <leader>c" o<cr><cr><esc><up>40i"<esc>o
+nnoremap <special> <leader>c* o<cr><cr><esc><up>i/<esc>40A*<esc>A/<esc>o
 
 " better indent adjustment
 " from blaenk
@@ -431,10 +432,10 @@ nnoremap <silent> <leader>ts :call DeleteTrailingWhiteSpace()<cr>
 func! ToggleTabIndentLine()
     " NOTE: trailing spaces are intended
     if ! exists("b:TabIndentLine") || !b:TabIndentLine
-        setl list lcs+=tab:\|\
+        setl list lcs+=tab:\|\ 
         let b:TabIndentLine=1
     else
-        setl nolist lcs-=tab:\|\
+        setl nolist lcs-=tab:\|\ 
         let b:TabIndentLine=0
     end
 endfunc
@@ -469,6 +470,7 @@ func! PreserveIndentAfterEsc()
     nnoremap o ox<BS>
     nnoremap O Ox<BS>
 endfunc
+call PreserveIndentAfterEsc()
 
 "}}}
 
