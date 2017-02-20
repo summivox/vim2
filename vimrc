@@ -48,7 +48,8 @@ Plugin 'LargeFile'
 Plugin 'editorconfig/editorconfig-vim'
 
 " UI
-Plugin 'bling/vim-airline' " powerline replacement
+Plugin 'vim-airline/vim-airline' " powerline replacement
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Yggdroot/indentLine' " indent guides (fancy)
 "Plugin 'nathanaelkane/vim-indent-guides' " indent guides (blockykirtgoh/vim-ycm-windows)
 Plugin 'kien/rainbow_parentheses.vim'
@@ -148,6 +149,7 @@ Plugin 'xolox/vim-lua-ftplugin'
 Plugin 'lukerandall/haskellmode-vim'
 Plugin 'wlangstroth/vim-racket'
 Plugin 'tpope/vim-haml'
+Plugin 'PProvost/vim-ps1'
 
 "}}}
 
