@@ -138,8 +138,6 @@ Plugin 'plasticboy/vim-markdown'
 " text, report, conf, ...
 Plugin 'summivox/vim-nfo'
 Plugin 'gprof.vim'
-Plugin 'chrisbra/csv.vim' " TODO: learn!
-Plugin 'evanmiller/nginx-vim-syntax'
 
 " misc
 Plugin 'fatih/vim-go'
@@ -340,7 +338,7 @@ set wildignore+=*~,*.bak,*.sw
 
 " airline
 set laststatus=2
-if has("gui_gtk2")
+if has("gui_gtk2") || has("gui_gtk3")
     set guifont=Consolas\ for\ Powerline\ 11,Consolas\ 11
 elseif has("gui_win32")
     set guifont=Consolas_for_Powerline_FixedD:h10,Consolas:h10
@@ -381,7 +379,7 @@ let g:gitgutter_sign_column_always = 1
 
 " session
 let g:session_autoload = 'no'
-let g:session_autosave = 'prompt'
+let g:session_autosave = 'no'
 
 "}}}
 
