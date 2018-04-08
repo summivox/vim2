@@ -55,7 +55,7 @@ Plugin 'Yggdroot/indentLine' " indent guides (fancy)
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'qstrahl/vim-matchmaker' " highlight word under cursor
 "Plugin 'myusuf3/numbers.vim'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 Plugin 'mkitt/tabline.vim' " tab
 Plugin 'xolox/vim-session'
 
@@ -68,12 +68,12 @@ Plugin 'tpope/vim-fugitive' " git client
 "Plugin 'tpope/vim-git' " in case vim-fugitive syntax doesn't work
 Plugin 'tpope/vim-dispatch' " `:Make` => async `:make`
 "Plugin 'severin-lemaignan/vim-minimap' " draws text
-Plugin 'koron/minimap-vim' " opens another vim window in sync
+"Plugin 'koron/minimap-vim' " opens another vim window in sync
 
 " Macro Editing
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
-Plugin 'tsaleh/vim-align' " for Obsessive-Compulsive patients ;)
+"Plugin 'tsaleh/vim-align' " for Obsessive-Compulsive patients ;)
 Plugin 'VisIncr' " Produce increasing/decreasing columns of numbers, dates, or daynames
 Plugin 'yueyoum/vim-linemovement' " C-up/down moves lines up/down
 
@@ -145,8 +145,8 @@ Plugin 'summivox/vim-pawn'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-ftplugin'
 Plugin 'lukerandall/haskellmode-vim'
-Plugin 'wlangstroth/vim-racket'
-Plugin 'tpope/vim-haml'
+"Plugin 'wlangstroth/vim-racket'
+"Plugin 'tpope/vim-haml'
 Plugin 'PProvost/vim-ps1'
 
 "}}}
