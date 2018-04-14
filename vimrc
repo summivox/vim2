@@ -107,6 +107,10 @@ Plugin 'Chun-Yang/vim-action-ag' " normal gag {text object}    e.g. gagiw
 
 " Language-specific {{{
 
+" Rust
+Plugin 'rust-lang/rust.vim'
+Plugin 'rhysd/vim-rustpeg'
+
 " C/C++ world
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'derekwyatt/vim-fswitch'
@@ -126,6 +130,7 @@ Plugin 'summivox/vim-coffee-script'
 "Plugin 'gkz/vim-ls'
 Plugin 'summivox/vim-ls'
 Plugin 'vim-scripts/JSON.vim'
+Plugin 'alunny/pegjs-vim'
 
 " python world
 Plugin 'hynek/vim-python-pep8-indent'
